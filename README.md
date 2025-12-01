@@ -31,6 +31,8 @@ services:
       - EULA=TRUE
       # Límite de memoria asignada a la JVM (Java Virtual Machine)
       - MEMORY=2G
+      # Modo offline para permitir usuarios sin cuenta premium
+      - ONLINE_MODE=FALSE
     volumes:
       # Persistencia de datos (mundos, configuraciones, inventarios)
       - mc-data:/data
@@ -48,6 +50,7 @@ volumes:
 | **ports** | Mapea el puerto 25565 del contenedor al host, permitiendo conexiones externas. |
 | **EULA=TRUE** | Variable de entorno crítica. Sin ella, el servidor abortará el inicio inmediatamente. |
 | **MEMORY=2G** | Gestiona el *Heap Size* de Java. Evita que el proceso consuma toda la RAM del sistema anfitrión, previniendo errores de "Out of Memory". |
+| **ONLINE_MODE=FALSE** | Permite conexiones de usuarios sin cuenta premium de Minecraft (modo offline/cracked). |
 | **volumes** | El volumen mc-data garantiza que, si el contenedor es eliminado, los datos del mundo persistan en el sistema. |
 
 ---
@@ -69,6 +72,10 @@ docker logs -f mc-server
 ```
 
 *El servidor estará operativo cuando aparezca el mensaje: Done (X.Xs)! For help, type "help".*
+
+### **Captura de Conexión al Servidor**
+
+![Conexión exitosa al servidor de Minecraft](Captura%20de%20pantalla%202025-12-01%20a%20las%2017.29.14.png)
 
 ---
 
